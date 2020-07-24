@@ -1,0 +1,116 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="136dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="#fff"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuildLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="12dp" />
+
+
+        <TextView
+            android:id="@+id/txtContestName"
+            android:layout_width="0dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="16dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{cardData.matchNumberText}"
+            android:textColor="#797979"
+            app:layout_constraintStart_toStartOf="@+id/leftGuildLine"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ICC Women’s World - 2nd T20" />
+
+
+        <TextView
+            android:id="@+id/txtTeam1"
+            android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtContestName"
+            app:layout_constraintStart_toStartOf="@+id/leftGuildLine"
+            app:layout_constraintEnd_toStartOf="@+id/txtTeam2"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="12sp"
+            tools:text="INDIA" />
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtTeam1"
+            app:layout_constraintStart_toStartOf="@+id/leftGuildLine"
+            tools:background="@android:color/holo_blue_bright"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            app:layout_constraintTop_toTopOf="@+id/img1"
+            app:layout_constraintBottom_toBottomOf="@+id/img1"
+            app:layout_constraintEnd_toEndOf="@+id/txtTeam2"
+            tools:background="#f0f"/>
+
+        <TextView
+            android:id="@+id/txtTeam2"
+            android:layout_width="0dp"
+            android:gravity="end"
+            app:layout_constraintTop_toBottomOf="@+id/txtContestName"
+            app:layout_constraintStart_toEndOf="@+id/txtTeam1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="12sp"
+            tools:text="Australia" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img1"
+            app:layout_constraintBottom_toBottomOf="@+id/img1"
+            android:text="LIVE"/>
+
+        <View
+            android:id="@+id/bottomTextBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="#f5f5f5"
+            app:layout_constraintTop_toBottomOf="@+id/img1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtContest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/bottomTextBackground"
+            app:layout_constraintStart_toStartOf="@id/leftGuildLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="8dp"
+            android:text="10 Teams     2 Contest"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,11 +1,6 @@
-include ':homeModules:HomeContract'
-include ':homeModules:matchCenterContract'
-include ':match:matCardContract'
-include ':match:matchCard'
-include ':homeModules:home'
-include ':homeModules:matchCenter'
-include ':prelude'
-include ':loginContract'
-include ':login'
+include ':Router'
+include ':ModuleContracts'
 include ':app'
-rootProject.name = "Modularisation2"
+include ':homeModules:matchCenter'
+include ':match:matchCard'
+rootProject.name = "MessageBasedModularization"

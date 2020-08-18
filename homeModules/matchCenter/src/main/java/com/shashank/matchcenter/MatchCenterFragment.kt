@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
-import com.shashank.matcardcontract.MatchCardModel
+import com.shashank.matchcard.MatchCard
+import com.shashank.modulecontracts.MatchCardModel
+import com.shashank.modulecontracts.Message
+import com.shashank.router.Router
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class MatchCenterFragment : Fragment() {
@@ -47,30 +50,28 @@ class MyViewPagerAdapter(val matches: List<MatchCardModel>) : PagerAdapter() {
 
     override fun getCount() = matches.size
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        return ModuleFactory.matchCardModule.getMatchCardView(container.context).apply {
-            ModuleFactory.matchCardModule.bindData(this, matches[position])
+    override fun instantiateItem(container: ViewGroup, position: Int): View {
+        return MatchCard(container.context).apply {
+            bindData(matches[position])
         }
     }
-
-
 }
 
 class RecyclerViewAdapter(val matches: List<MatchCardModel>) :
     RecyclerView.Adapter<RecyclerViewAdapter.RViewHolder>() {
 
-    class RViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class RViewHolder(val view: MatchCard) : RecyclerView.ViewHolder(view) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RViewHolder {
-        return RViewHolder(ModuleFactory.matchCardModule.getMatchCardView(parent.context));
+        return RViewHolder(MatchCard(parent.context))
     }
 
     override fun getItemCount() = matches.size
 
     override fun onBindViewHolder(holder: RecyclerViewAdapter.RViewHolder, position: Int) {
-        ModuleFactory.matchCardModule.bindData(holder.view, matches[position])
+        holder.view.bindData(matches[position])
     }
 }
 

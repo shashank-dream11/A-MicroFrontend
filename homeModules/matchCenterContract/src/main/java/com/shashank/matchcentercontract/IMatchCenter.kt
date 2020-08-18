@@ -12,5 +12,5 @@ interface IMatchCenter : IModuleContract {
 }
 
 interface  IMatchCenterCallback {
-    fun onMatchClicked() : Int
+    fun onMatchClicked()
 }

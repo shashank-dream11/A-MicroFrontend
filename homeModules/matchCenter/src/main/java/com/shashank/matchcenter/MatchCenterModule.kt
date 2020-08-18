@@ -1,18 +1,28 @@
 package com.shashank.matchcenter
 
-import com.shashank.matchcentercontract.IMatchCenter
-import com.shashank.matchcentercontract.IMatchCenterCallback
-import java.lang.ref.WeakReference
+import arrow.core.Either
+import com.shashank.modulecontracts.Message
+import com.shashank.modulecontracts.Status
+import com.shashank.router.IModule
+import com.shashank.router.Router
+import java.util.*
 
-object MatchCenterModule : IMatchCenter {
+object MatchCenterModule : IModule {
 
-    val callbacks = HashSet<WeakReference<IMatchCenterCallback>>()
 
-    override fun getMatchCenterFragment() = MatchCenterFragment.newInstance()
+    override val moduleId: String = UUID.randomUUID().toString()
 
-    override fun setMatchCenterCallback(callback: IMatchCenterCallback) {
-        if (callbacks.mapNotNull { it.get() }.contains(callback)) {
-            callbacks.add(WeakReference(callback))
+    val supportedMsg = arrayOf("open_match_center")
+
+    init {
+        register()
+    }
+
+    override fun register() {
+        Router.subscribe("open_match_center", moduleId) { msg, id ->
+            Router.publish("return_open_match_center", id, moduleId,
+                    Message.FragmentMessage(MatchCenterFragment.newInstance()))
+            Either.right(Status.Success)
         }
     }
 }
